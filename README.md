@@ -8,7 +8,5 @@
 * Flask
 * redis
 * Server-sent events/EventSource
-* Solid.js
-* Bootstrap
 
 
