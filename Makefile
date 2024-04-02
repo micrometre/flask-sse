@@ -18,3 +18,6 @@ restart:
 remove:
 	docker-compose down -v
 	docker-compose rm -f
+clean: 
+	sudo rm -rf flaskalpr/static/alprd1_images/
+	mkdir flaskalpr/static/camera1_images/

@@ -16,12 +16,15 @@ def publish():
     try:
         # Get data from request and parse it
         data = json.loads(request.data)
-        print(data)
+        alpr_results = data["results"]
+        alpr_plate = alpr_results[0]["plate"]
+        alpr_plate_str = json.dumps(alpr_plate)
+        print(alpr_plate_str)
 
         # Send to Redis publisher
-        sse.publish(data, type="bigboxcode")
+        sse.publish(alpr_plate_str, type="bigboxcode")
         
-        return jsonify(status="success", message="published", data=data)
+        return jsonify(status="success", message="published", data=alpr_plate_str)
     except:
         return jsonify(status="fail", message="not published")
 
